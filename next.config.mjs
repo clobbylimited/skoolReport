@@ -5,6 +5,10 @@ const nextConfig = {
     },
     eslint: {
       ignoreDuringBuilds: true,
-    },};
+    },
+    experimental: {
+      appDir: true,
+      serverComponentsExternalPackages: ["mongoose"],
+    }};
 
 export default nextConfig;
