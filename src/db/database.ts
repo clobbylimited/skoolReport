@@ -24,8 +24,8 @@
 import { MongoClient } from 'mongodb'
 
 export const client = new MongoClient((process.env.MONGODB_URI as string),{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
     // autoReconnect: true, // This is typically true by default in most drivers
     // reconnectTries: Number.MAX_VALUE,  // Keep trying to reconnect forever
     // reconnectInterval: 1000  

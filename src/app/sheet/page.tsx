@@ -13,15 +13,18 @@ export default function Home() {
   const [subjectsData, setsubjectsData] = useState<any[]>([]);
   const [affectiveDomain, setaffectiveDomain] = useState<any[]>([
     { title: "Neatness", value: undefined },
-    { title: "Resoning with teachers", value: undefined },
-    { title: "Reservness", value: undefined },
+    { title: "Relationship with Teachers", value: undefined },
+    { title: "Perseverance", value: undefined },
     { title: "Attentiveness", value: undefined },
-    { title: "Attitude to school work", value: undefined },
-    { title: "Emotional stability", value: undefined },
+    { title: "Attitude to School work", value: undefined },
+    { title: "Health", value: undefined },
+    { title: "Emotional Stability", value: undefined },
     { title: "Helping others", value: undefined },
-    { title: "Cooperation with others", value: undefined },
+    { title: "Punctuality", value: undefined },
     { title: "Politeness", value: undefined },
-    { title: "Puctuality", value: undefined },
+    { title: "Initiative", value: undefined },
+    { title: "Cooperation with Others", value: undefined },
+    { title: "Leadership traits", value: undefined },
   ]);
   const [psy, setpsy] = useState<any[]>([
     { title: "Sport", value: undefined },
@@ -107,27 +110,27 @@ export default function Home() {
           // }
 
           // Calculate the overall total
-          if (updatedSubject.tt >= 70) {
+          if (updatedSubject.tt >= 90) {
             updatedSubject.gd = "A";
             updatedSubject.cmt = "Distinction";
           }
-          if (updatedSubject.tt >= 61 && updatedSubject.tt < 70) {
+          if (updatedSubject.tt >= 70 && updatedSubject.tt < 89.9) {
+            updatedSubject.gd = "A";
+            updatedSubject.cmt = "Excellent";
+          }
+          if (updatedSubject.tt >= 60 && updatedSubject.tt < 69.9) {
             updatedSubject.gd = "B";
             updatedSubject.cmt = "Very Good";
           }
-          if (updatedSubject.tt >= 51 && updatedSubject.tt < 61) {
+          if (updatedSubject.tt >= 50 && updatedSubject.tt < 59.9) {
             updatedSubject.gd = "C";
-            updatedSubject.cmt = "Good";
-          }
-          if (updatedSubject.tt >= 45 && updatedSubject.tt < 51) {
-            updatedSubject.gd = "D1";
             updatedSubject.cmt = "Average";
           }
-          if (updatedSubject.tt >= 40 && updatedSubject.tt < 45) {
-            updatedSubject.gd = "D2";
+          if (updatedSubject.tt >= 40 && updatedSubject.tt < 49.9) {
+            updatedSubject.gd = "D";
             updatedSubject.cmt = "Fair";
           }
-          if (updatedSubject.tt <= 39) {
+          if (updatedSubject.tt <= 39.9) {
             updatedSubject.gd = "F";
             updatedSubject.cmt = "Poor";
           }
@@ -160,55 +163,66 @@ export default function Home() {
     2;
 
   let grade;
+
   if (average >= 70) {
     grade = "A";
   }
-  if (average >= 61 && average < 70) {
+  if (average >= 61 && average < 69.9) {
     grade = "B";
   }
-  if (average >= 51 && average < 61) {
+  if (average >= 50 && average < 59.9) {
     grade = "C";
   }
-  if (average >= 45 && average < 51) {
-    grade = "D1";
+  if (average >= 40 && average < 49.9) {
+    grade = "D";
   }
-  if (average >= 40 && average < 45) {
-    grade = "D2";
-  }
-  if (average <= 39) {
+  if (average <= 39.9) {
     grade = "F";
   }
 
   return (
-    <main className=" text-[10px] select-none bg- w-full text-[#111] h-full print:px-[0px] px-[200px] overflow-hidden py-[50px] flex flex-col gap-[30px]">
+    <main className=" print:text-[8px] select-none bg- w-full text-[#111] h-full print:px-[0px] px-[200px] overflow-hidden print:py-0 py-[50px] flex flex-col gap-[30px]">
       <div className="flex w-full justify-center items-center flex-col gap-[5px]">
         <div className="flex gap-[50px] justify-between w-full">
-          <div className="flex-1 print:min-w-[100px] min-w-[200px]"><Image
-          height={100}
-          width={100}
-          alt="logo"
-          src={logo}
-          className="w-[100px] aspect-square"
-        /></div>
-        <div className="flex h-full flex-col text-center">
-          <span className="uppercase text-[30px] font-[700] leading-tight">first apex schools</span>
-          <span>29, First Apex Avenue, Amikanle ,Alagbado. Lagos State</span>
-          <span>TEL: 01-8744707,08035253353, 08035290535</span>
-          <span>Website: www.firstapexschools.com, E-mail: firstapexschools@yahoo.com</span>
+          <div className="flex-1 print:min-w-[100px] min-w-[200px]">
+            <Image
+              height={100}
+              width={100}
+              alt="logo"
+              src={logo}
+              className="w-[80px] aspect-square"
+            />
+          </div>
+          <div className="flex h-full flex-col text-center">
+            <span className="uppercase text-[25px] font-[800] leading-tight">
+              first apex schools
+            </span>
+            <span className="font-[500]">
+              29, First Apex Avenue, Amikanle ,Alagbado. Lagos State
+            </span>
+            <span className="font-[500]">
+              TEL: 01-8744707,08035253353, 08035290535
+            </span>
+            <span className="font-[500]">
+              Website: www.firstapexschools.com, E-mail:
+              firstapexschools@yahoo.com
+            </span>
+          </div>
+          <div className="flex-1  print:min-w-[100px] min-w-[200px]"></div>
         </div>
-        <div className="flex-1  print:min-w-[100px] min-w-[200px]"></div>
-        </div>
-        <span className="text-[16px] font-[600]">Terminal report sheet</span>
+        <span className="text-[10px] uppercase font-[700]">
+          Terminal report sheet
+        </span>
       </div>
-      <div className="flex w-full items-center gap-[20px] justify-center">
-        <div className="flex-1 flex flex-col gap-[10px]">
+      <div className="flex w-full items-center gap-[20px] justify-end">
+        <div className="dflex-1 w-max flex flex-col gap-[10px]">
           <div className="flex items-end gap-[20px] justify-between">
             <div className="flex-1 flex">
-              <span className="whitespace-nowrap font-[600]">Name:</span>
+              <span className=" whitespace-nowrap font-[700]">Name:</span>
               <input className={INnputClasses} />
             </div>
             <div className="sw-max flex">
-              <span className=" whitespace-nowrap font-[600]">
+              <span className="  whitespace-nowrap font-[700]">
                 Number of times school opened:
               </span>
               <input className={INnputClasses + " w-[50px]"} />
@@ -216,19 +230,19 @@ export default function Home() {
           </div>
           <div className="flex items-end gap-[20px] justify-between">
             <div className="flex-1 flex">
-              <span className=" whitespace-nowrap font-[600]">Student ID:</span>
+              <span className="  whitespace-nowrap font-[700]">Student ID:</span>
               <input className={INnputClasses} />
             </div>
             <div className="sw-max flex">
-              <span className=" whitespace-nowrap font-[600]">Gender:</span>
+              <span className="  whitespace-nowrap font-[700]">Gender:</span>
               <input className={INnputClasses} />
             </div>
             <div className="sw-max flex">
-              <span className=" whitespace-nowrap font-[600]">Age:</span>
+              <span className="  whitespace-nowrap font-[700]">Age:</span>
               <input className={INnputClasses} />
             </div>
             <div className="sw-max flex">
-              <span className=" whitespace-nowrap font-[600]">
+              <span className="  whitespace-nowrap font-[700]">
                 Number of times present:
               </span>
               <input className={INnputClasses + " w-[50px]"} />
@@ -236,15 +250,15 @@ export default function Home() {
           </div>
           <div className="flex items-end gap-[20px] justify-between">
             <div className="flex-1 flex">
-              <span className=" whitespace-nowrap font-[600]">Class:</span>
+              <span className="  whitespace-nowrap font-[700]">Class:</span>
               <input className={INnputClasses} />
             </div>
             <div className="sw-max flex">
-              <span className=" whitespace-nowrap font-[600]">Session:</span>
+              <span className="  whitespace-nowrap font-[700]">Session:</span>
               <input className={INnputClasses} />
             </div>
             <div className="sw-max flex">
-              <span className=" whitespace-nowrap font-[600]">
+              <span className="  whitespace-nowrap font-[700]">
                 Number in class:
               </span>
               <input className={INnputClasses + " w-[50px]"} />
@@ -252,20 +266,20 @@ export default function Home() {
           </div>
           <div></div>
         </div>
-        <table className="min-w-[200px] border" border={1}>
+        <table className="w-[400px] print:w-[150px] print:max-w-[150px] border" border={1}>
           <tbody>
-            <tr className="border">
+            <tr className="border !border-[#111]">
               <td>
                 <div className="flex items-center justify-between px-[5px]">
-                  <span className="font-[600]">Total marks obtainable:</span>
+                  <span className="font-[700]">Total marks obtainable:</span>
                   <span>{subjectsData.length * 100}</span>
                 </div>
               </td>
             </tr>
-            <tr className="border">
+            <tr className="border !border-[#111]">
               <td>
                 <div className="flex items-center justify-between px-[5px]">
-                  <span className="font-[600]">Total marks obtained:</span>
+                  <span className="font-[700]">Total marks obtained:</span>
                   <span>
                     {subjectsData.reduce(
                       (acc, subject) =>
@@ -276,10 +290,10 @@ export default function Home() {
                 </div>
               </td>
             </tr>
-            <tr className="border">
+            <tr className="border !border-[#111]">
               <td>
                 <div className="flex items-center justify-between px-[5px]">
-                  <span className="font-[600]">Percentage:</span>
+                  <span className="font-[700]">Percentage:</span>
                   <span>
                     {(subjectsData.reduce(
                       (acc, subject) =>
@@ -293,18 +307,18 @@ export default function Home() {
                 </div>
               </td>
             </tr>
-            <tr className="border">
+            <tr className="border !border-[#111]">
               <td>
                 <div className="flex items-center justify-between px-[5px]">
-                  <span className="font-[600]">Average:</span>
+                  <span className="font-[700]">Average:</span>
                   <span>{average} %</span>
                 </div>
               </td>
             </tr>
-            <tr className="border">
+            <tr className="border !border-[#111]">
               <td>
                 <div className="flex items-center justify-between px-[5px]">
-                  <span className="font-[600]">Overall Grade:</span>
+                  <span className="font-[700]">Overall Grade:</span>
                   <span>{grade}</span>
                 </div>
               </td>
@@ -337,55 +351,67 @@ export default function Home() {
             Add subject
           </button>
         </div>
-        <div className="w-full flex flex-col gap-[30px] ">
+        <div className="w-full flex flex-col gap-[5px] ">
           <div className="grid border-b border-r border-[#111] divide-x divide-y divide-[#111] grid-cols-12">
-            <div className="font-[600] border-t border-l border-[#111] uppercase text-center col-span-2">
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center border-t border-l border-[#111] uppercase text-center col-span-2">
               subject
             </div>
-            <div className="font-[600] uppercase text-center col-span-1">
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
               2nd term total
             </div>
-            <div className="font-[600] uppercase text-center col-span-1">
-              CA 1
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-2">
+              FIRST TEST/NOTE ASSESSMENT
             </div>
-            <div className="font-[600] uppercase text-center col-span-1">
-              CA 2
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
+              MID TERM TEST
             </div>
-            <div className="font-[600] uppercase text-center col-span-1">
-              Total Ca
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
+              TOTAL CA
             </div>
-            <div className="font-[600] uppercase text-center col-span-1">
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
               Exam
             </div>
-            <div className="font-[600] uppercase text-center col-span-1">
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
               Total
             </div>
-            <div className="font-[600] uppercase text-center col-span-2">
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
               Grade
             </div>
-            <div className="font-[600] uppercase text-center col-span-2">
-              Comment
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-2">
+              SUBJECT TEACHER'S COMMENTS
             </div>
 
-            <div className="font-[600] col-span-2"></div>
-            <div className="font-[600] text-center  col-span-1">100</div>
-            <div className="font-[600] text-center  col-span-1">10</div>
-            <div className="font-[600] text-center  col-span-1">30</div>
-            <div className="font-[600] text-center  col-span-1">40</div>
-            <div className="font-[600] text-center  col-span-1">60</div>
-            <div className="font-[600] text-center  col-span-1">100</div>
-            <div className="font-[600] text-center  col-span-2"></div>
-            <div className="font-[600] text-center  col-span-2"></div>
+            <div className="font-[700] text-[14px] print:text-[8px] col-span-2"></div>
+            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1">
+              100
+            </div>
+            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-2">
+              10
+            </div>
+            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1">
+              30
+            </div>
+            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1">
+              40
+            </div>
+            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1">
+              60
+            </div>
+            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1">
+              100
+            </div>
+            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1"></div>
+            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-2"></div>
 
             {subjectsData.map((subject: any, index: number) => (
               <>
-                <div className="col-span-2 print:h-auto h-[40px] ">
+                <div className="col-span-2 print:h-[20px] h-[40px] ">
                   <input
                     className="border-0 px-[5px] cursor-pointer focus:cursor-text h-full transition-all duration-300 focus:!bg-blue-300 focus:text-[16px] focus:font-[600] w-full font-[600] outline-none text-start"
                     defaultValue={subject.subject}
                   />
                 </div>
-                <div className="font-[500] print:h-auto h-[40px] col-span-1">
+                <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
                   <input
                     className={scoreInput}
                     value={subject.ttrm}
@@ -394,7 +420,7 @@ export default function Home() {
                     }
                   />
                 </div>
-                <div className="font-[500] print:h-auto h-[40px] col-span-1">
+                <div className="font-[500] print:h-[20px] h-[40px] col-span-2">
                   <input
                     className={scoreInput}
                     value={subject.ca1}
@@ -403,7 +429,7 @@ export default function Home() {
                     }
                   />
                 </div>
-                <div className="font-[500] print:h-auto h-[40px] col-span-1">
+                <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
                   <input
                     className={scoreInput}
                     value={subject.ca2}
@@ -412,7 +438,7 @@ export default function Home() {
                     }
                   />
                 </div>
-                <div className="font-[500] print:h-auto h-[40px] col-span-1">
+                <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
                   <input
                     className={
                       scoreInput +
@@ -425,7 +451,7 @@ export default function Home() {
                     }
                   />
                 </div>
-                <div className="font-[500] print:h-auto h-[40px] col-span-1">
+                <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
                   <input
                     className={scoreInput}
                     value={subject.ex}
@@ -434,7 +460,7 @@ export default function Home() {
                     }
                   />
                 </div>
-                <div className="font-[500] print:h-auto h-[40px] col-span-1">
+                <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
                   <input
                     className={
                       scoreInput +
@@ -447,21 +473,21 @@ export default function Home() {
                     }
                   />
                 </div>
-                <div className="font-[500] print:h-auto h-[40px] col-span-2">
+                <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
                   <input
                     className={
                       scoreInput +
-                      " select-none selection:bg-transparent !cursor-not-allowed"
+                      " select-none selection:bg-transparent uppercase !cursor-not-allowed"
                     }
                     disabled
                     value={subject.gd}
                   />
                 </div>
-                <div className="font-[500] print:h-auto h-[40px] col-span-2">
+                <div className="font-[500] print:h-[20px] h-[40px] col-span-2">
                   <input
                     className={
                       scoreInput +
-                      " select-none selection:bg-transparent !cursor-not-allowed"
+                      " select-none selection:bg-transparent uppercase !cursor-not-allowed"
                     }
                     disabled
                     value={subject.cmt}
@@ -470,255 +496,230 @@ export default function Home() {
               </>
             ))}
           </div>
-          <div className="grid grid-cols-12 gap-[10px]">
-            <div className="col-span-3 h-max grid border-b border-r border-[#111] divide-x divide-y divide-[#111] grid-cols-12">
-              <div className="font-[600] border-t border-l border-[#111] uppercase text-center col-span-7">
+          <div className="grid grid-cols-12 gap-[5px]">
+            <div className="col-span-3 overflow-hidden h-max grid border-b border-r border-[#111] divide-x divide-y divide-[#111] grid-cols-12">
+              <div className="font-[700] text-[8px] border-t border-l border-[#111] text-center col-span-7">
                 Affective domain
               </div>
-              <div className="font-[600] uppercase text-center col-span-1">
+              <div className="font-[700] text-[8px] uppercase text-center col-span-1">
                 5
               </div>
-              <div className="font-[600] uppercase text-center col-span-1">
+              <div className="font-[700] text-[8px] uppercase text-center col-span-1">
                 4
               </div>
-              <div className="font-[600] uppercase text-center col-span-1">
+              <div className="font-[700] text-[8px] uppercase text-center col-span-1">
                 3
               </div>
-              <div className="font-[600] uppercase text-center col-span-1">
+              <div className="font-[700] text-[8px] uppercase text-center col-span-1">
                 2
               </div>
-              <div className="font-[600] uppercase text-center col-span-1">
+              <div className="font-[700] text-[8px] uppercase text-center col-span-1">
                 1
               </div>
 
               {affectiveDomain.map((affective: any, index: number) => (
                 <>
-                  <div className="col-span-7 print:h-auto text-[9px] h-[40px] ">
-                    <span>{affective.title}</span>
+                  <div className="col-span-7 print:h-[20px] h-[40px] ">
+                    <span className="px-[5px] print:pt-[5px] !flex justify-start item-center h-full text-[14px] printer print:text-[8px] !font-[500]">
+                      {affective.title}
+                    </span>
                   </div>
                   <div
                     onClick={() => onAffectiveChecked(5, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
+                    className="font-[500] print:h-[20px] cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
                   >
                     {affective.value == 5 && checkMark}
                   </div>
                   <div
                     onClick={() => onAffectiveChecked(4, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
+                    className="font-[500] print:h-[20px] cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
                   >
                     {affective.value == 4 && checkMark}
                   </div>
                   <div
                     onClick={() => onAffectiveChecked(3, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
+                    className="font-[500] print:h-[20px] cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
                   >
                     {affective.value == 3 && checkMark}
                   </div>
                   <div
                     onClick={() => onAffectiveChecked(2, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
+                    className="font-[500] print:h-[20px] cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
                   >
                     {affective.value == 2 && checkMark}
                   </div>
                   <div
                     onClick={() => onAffectiveChecked(1, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
+                    className="font-[500] print:h-[20px] cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
                   >
                     {affective.value == 1 && checkMark}
                   </div>
                 </>
               ))}
             </div>
-            <div className="col-span-3 h-max grid border-b border-r border-[#111] divide-x divide-y divide-[#111] grid-cols-12">
-              <div className="font-[600] uppercase border-t border-l border-[#111] text-center col-span-7">
+            <div className="col-span-3 overflow-hidden h-max grid border-b border-r border-[#111] divide-x divide-y divide-[#111] grid-cols-12">
+              <div className="font-[700] text-[8px] border-t border-l border-[#111] text-center col-span-7 ">
                 Psyohomotor domain
               </div>
-              <div className="font-[600] uppercase text-center col-span-1">
+              <div className="font-[700] text-[8px] uppercase text-center col-span-1">
                 5
               </div>
-              <div className="font-[600] uppercase text-center col-span-1">
+              <div className="font-[700] text-[8px] uppercase text-center col-span-1">
                 4
               </div>
-              <div className="font-[600] uppercase text-center col-span-1">
+              <div className="font-[700] text-[8px] uppercase text-center col-span-1">
                 3
               </div>
-              <div className="font-[600] uppercase text-center col-span-1">
+              <div className="font-[700] text-[8px] uppercase text-center col-span-1">
                 2
               </div>
-              <div className="font-[600] uppercase text-center col-span-1">
+              <div className="font-[700] text-[8px] uppercase text-center col-span-1">
                 1
               </div>
 
               {psy.map((psy: any, index: number) => (
                 <>
-                  <div className="col-span-7 print:h-auto text-[9px] h-[40px] ">
-                    <span>{psy.title}</span>
+                  <div className="col-span-7 print:h-[20px] text-[14px] printer print:text-[8px] !font-[500] h-[40px] ">
+                    <span className="px-[5px] print:pt-[5px] !flex justify-start item-center h-full">
+                      {psy.title}
+                    </span>
                   </div>
                   <div
                     onClick={() => onpsyChecked(5, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
+                    className="font-[500] print:h-[20px] cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
                   >
                     {psy.value == 5 && checkMark}
                   </div>
                   <div
                     onClick={() => onpsyChecked(4, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
+                    className="font-[500] print:h-[20px] cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
                   >
                     {psy.value == 4 && checkMark}
                   </div>
                   <div
                     onClick={() => onpsyChecked(3, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
+                    className="font-[500] print:h-[20px] cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
                   >
                     {psy.value == 3 && checkMark}
                   </div>
                   <div
                     onClick={() => onpsyChecked(2, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
+                    className="font-[500] print:h-[20px] cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
                   >
                     {psy.value == 2 && checkMark}
                   </div>
                   <div
                     onClick={() => onpsyChecked(1, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
+                    className="font-[500] print:h-[20px] cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
                   >
                     {psy.value == 1 && checkMark}
                   </div>
                 </>
               ))}
             </div>
-            <div className="col-span-2 h-max grid border-b border-r border-[#111] divide-x divide-y divide-[#111] grid-cols-12">
-              <div className="font-[600] border-t border-l border-[#111] uppercase text-center col-span-7">
-                Others
-              </div>
-              <div className="font-[600] uppercase text-center col-span-1">
-                5
-              </div>
-              <div className="font-[600] uppercase text-center col-span-1">
-                4
-              </div>
-              <div className="font-[600] uppercase text-center col-span-1">
-                3
-              </div>
-              <div className="font-[600] uppercase text-center col-span-1">
-                2
-              </div>
-              <div className="font-[600] uppercase text-center col-span-1">
-                1
-              </div>
-
-              {club.map((clb: any, index: number) => (
-                <>
-                  <div className="col-span-7 print:h-auto text-[9px] h-[40px] ">
-                    <span>{clb.title}</span>
-                  </div>
-                  <div
-                    onClick={() => onclubChecked(5, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
-                  >
-                    {clb.value == 5 && checkMark}
-                  </div>
-                  <div
-                    onClick={() => onclubChecked(4, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
-                  >
-                    {clb.value == 4 && checkMark}
-                  </div>
-                  <div
-                    onClick={() => onclubChecked(3, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
-                  >
-                    {clb.value == 3 && checkMark}
-                  </div>
-                  <div
-                    onClick={() => onclubChecked(2, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
-                  >
-                    {clb.value == 2 && checkMark}
-                  </div>
-                  <div
-                    onClick={() => onclubChecked(1, index)}
-                    className="font-[500] print:h-auto cursor-pointer hover:bg-blue-100 transition-all duration-300 h-[40px] flex justify-center items-center col-span-1"
-                  >
-                    {clb.value == 1 && checkMark}
-                  </div>
-                </>
-              ))}
-            </div>
-            <table className="col-span-2 h-max border" border={1}>
+            <table
+              className="col-span-3 overflow-hidden h-max border !border-[#111]"
+              border={1}
+            >
               <tbody>
-                <tr className="border">
+                <tr className="border !border-[#111]">
                   <td>
-                    <div className="flex items-center justify-between  text-[9px] px-[5px]">
-                      <span className="font-[600] flex-1">Range</span>
-                      <span className="font-[600]">Grade</span>
-                      <span className="font-[600] flex-1 flex justify-end">
+                    <div className="flex items-center justify-between  text-[8px] px-[5px]">
+                      <span className="font-[700] text-[8px] flex-1">
+                        Range
+                      </span>
+                      <span className="font-[700] text-[8px]">Grade</span>
+                      <span className="font-[700] text-[8px] flex-1 flex justify-end">
                         Comment
                       </span>
                     </div>
                   </td>
                 </tr>
-                <tr className="border">
+                <tr className="border !border-[#111]">
                   <td>
-                    <div className="flex items-center justify-between  text-[9px] px-[5px]">
-                      <span className="font-[400] flex-1">70-100</span>
-                      <span className="font-[400]">A</span>
-                      <span className="font-[400] flex-1 flex justify-end">
+                    <div className="flex items-center justify-between  text-[8px] px-[5px]">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1">
+                        90-100
+                      </span>
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
+                        A
+                      </span>
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1 flex justify-end uppercase">
                         Distinction
                       </span>
                     </div>
                   </td>
                 </tr>
-                <tr className="border">
+                <tr>
                   <td>
-                    <div className="flex items-center justify-between  text-[9px] px-[5px]">
-                      <span className="font-[400] flex-1">61-69</span>
-                      <span className="font-[400]">B</span>
-                      <span className="font-[400] flex-1 flex justify-end">
+                    <div className="flex items-center justify-between  text-[8px] px-[5px]">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1">
+                        70-89.9
+                      </span>
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
+                        A
+                      </span>
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1 flex justify-end uppercase">
+                        EXCELLENT
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr className="border !border-[#111]">
+                  <td>
+                    <div className="flex items-center justify-between  text-[8px] px-[5px]">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1">
+                        61-69.9
+                      </span>
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
+                        B
+                      </span>
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1 flex justify-end uppercase">
                         Very Good
                       </span>
                     </div>
                   </td>
                 </tr>
-                <tr className="border">
+                <tr className="border !border-[#111]">
                   <td>
-                    <div className="flex items-center justify-between  text-[9px] px-[5px]">
-                      <span className="font-[400] flex-1">51-60</span>
-                      <span className="font-[400]">C</span>
-                      <span className="font-[400] flex-1 justify-end flex">
-                        Good
+                    <div className="flex items-center justify-between  text-[8px] px-[5px]">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1">
+                        50-59.9
+                      </span>
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
+                        C
+                      </span>
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1 flex justify-end uppercase">
+                        Average
                       </span>
                     </div>
                   </td>
                 </tr>
-                <tr className="border">
+                <tr className="border !border-[#111]">
                   <td>
-                    <div className="flex items-center justify-between  text-[9px] px-[5px]">
-                      <span className="font-[400] flex-1">45-49</span>
-                      <span className="font-[400]">D</span>
-                      <span className="font-[400] flex-1 flex justify-end">
-                        Average(D1)
+                    <div className="flex items-center justify-between  text-[8px] px-[5px]">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1">
+                        40-49.9
+                      </span>
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
+                        D
+                      </span>
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1 flex justify-end uppercase">
+                        Fair
                       </span>
                     </div>
                   </td>
                 </tr>
-                <tr className="border">
+                <tr className="border !border-[#111]">
                   <td>
-                    <div className="flex items-center justify-between  text-[9px] px-[5px]">
-                      <span className="font-[400] flex-1">40-44</span>
-                      <span className="font-[400]">D</span>
-                      <span className="font-[400] flex-1 flex justify-end">
-                        Fair(D2)
+                    <div className="flex items-center justify-between  text-[8px] px-[5px]">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1">
+                        0-39.9
                       </span>
-                    </div>
-                  </td>
-                </tr>
-                <tr className="border">
-                  <td>
-                    <div className="flex items-center justify-between  text-[9px] px-[5px]">
-                      <span className="font-[400] flex-1">0-39</span>
-                      <span className="font-[400]">F</span>
-                      <span className="font-[400] flex-1 flex justify-end">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
+                        F
+                      </span>
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500] flex-1 flex justify-end uppercase">
                         Poor
                       </span>
                     </div>
@@ -726,47 +727,60 @@ export default function Home() {
                 </tr>
               </tbody>
             </table>
-            <table className="col-span-2 h-max border" border={1}>
+            <table
+              className="col-span-3 overflow-hidden h-max border border-[#111]"
+              border={1}
+            >
               <tbody>
-                <tr className="border">
+                <tr className="border !border-[#111]">
                   <td>
                     <div className="flex items-center justify-center px-[5px]">
-                      <span className="font-[600]">Trait rating tools</span>
+                      <span className="font-[700] text-[8px]">
+                        Trait rating tools
+                      </span>
                     </div>
                   </td>
                 </tr>
-                <tr className="border">
+                <tr className="border !border-[#111]">
                   <td>
-                    <div className="flex items-center justify-center  text-[9px] px-[5px]">
-                      <span className="font-[400]">5 == Excellence</span>
+                    <div className="flex items-center justify-center  text-[8px] px-[5px]">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
+                        5 == Excellence
+                      </span>
                     </div>
                   </td>
                 </tr>
-                <tr className="border">
+                <tr className="border !border-[#111]">
                   <td>
-                    <div className="flex items-center justify-center  text-[9px] px-[5px]">
-                      <span className="font-[400]">4 == Good</span>
+                    <div className="flex items-center justify-center  text-[8px] px-[5px]">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
+                        4 == Good
+                      </span>
                     </div>
                   </td>
                 </tr>
-                <tr className="border">
+                <tr className="border !border-[#111]">
                   <td>
-                    <div className="flex items-center justify-center  text-[9px] px-[5px]">
-                      <span className="font-[400]">2 == Fair</span>
+                    <div className="flex items-center justify-center  text-[8px] px-[5px]">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
+                        2 == Fair
+                      </span>
                     </div>
                   </td>
                 </tr>
-                <tr className="border">
+                <tr className="border !border-[#111]">
                   <td>
-                    <div className="flex items-center justify-center  text-[9px] px-[5px]">
-                      <span className="font-[400]">2 == Poor</span>
+                    <div className="flex items-center justify-center  text-[8px] px-[5px]">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
+                        2 == Poor
+                      </span>
                     </div>
                   </td>
                 </tr>
-                <tr className="border">
+                <tr className="border !border-[#111]">
                   <td>
-                    <div className="flex items-center justify-center  text-[9px] px-[5px]">
-                      <span className="font-[400]">
+                    <div className="flex items-center justify-center  text-[8px] px-[5px]">
+                      <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
                         1 == No observation traits
                       </span>
                     </div>
