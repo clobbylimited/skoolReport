@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Home() {
   const INnputClasses =
-    "border-b border-[#111] min-w-[50px] w-full outline-none text-center";
+    "border-b print:text-[14px] border-[#111] min-w-[50px] w-full outline-none text-center";
   const scoreInput =
     "border-0 !p-0 focus:!bg-blue-300 selection:bg-blue-400 cursor-pointer focus:cursor-text print:hover:bg-white hover:bg-blue-100 focus:text-[16px] focus:font-[600] dfocus:!text-white !w-full h-full transition-all duration-300 outline-none text-center w-max font-[400]";
 
@@ -30,7 +30,7 @@ export default function Home() {
     { title: "Sport", value: undefined },
     { title: "Verbal Fluency", value: undefined },
     { title: "Hand writing", value: undefined },
-    { title: "endling tools", value: undefined },
+    { title: "Handling tools", value: undefined },
   ]);
   const [club, setclub] = useState<any[]>([
     { title: "Language Skill", value: undefined },
@@ -180,6 +180,11 @@ export default function Home() {
     grade = "F";
   }
 
+  function roundTo(num: number, precision: number) {
+    const factor = Math.pow(10, precision)
+    return Math.round(num * factor) / factor
+  }
+
   return (
     <main className=" print:text-[8px] select-none bg- w-full text-[#111] h-full print:px-[0px] px-[200px] overflow-hidden print:py-0 py-[50px] flex flex-col gap-[30px]">
       <div className="flex w-full justify-center items-center flex-col gap-[5px]">
@@ -216,57 +221,57 @@ export default function Home() {
       </div>
       <div className="flex w-full items-center gap-[20px] justify-end">
         <div className="dflex-1 w-max flex flex-col gap-[10px]">
-          <div className="flex items-end gap-[20px] justify-between">
-            <div className="flex-1 flex">
-              <span className=" whitespace-nowrap font-[700]">Name:</span>
+          <div className="flex items-end gap-[10px] justify-between">
+            <div className="flex-1 flex items-end">
+              <span className=" whitespace-nowrap font-[700] print:text-[10px]">Name:</span>
               <input className={INnputClasses} />
             </div>
-            <div className="sw-max flex">
-              <span className="  whitespace-nowrap font-[700]">
+            <div className="sw-max flex items-end">
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">
                 Number of times school opened:
               </span>
-              <input className={INnputClasses + " w-[50px]"} />
+              <input className={INnputClasses + " max-w-[50px]"} />
             </div>
           </div>
-          <div className="flex items-end gap-[20px] justify-between">
-            <div className="flex-1 flex">
-              <span className="  whitespace-nowrap font-[700]">Student ID:</span>
-              <input className={INnputClasses} />
+          <div className="flex items-end gap-[10px] justify-between">
+            <div className="flex-1 flex items-end">
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">Student ID:</span>
+              <input className={INnputClasses+ " max-w-[200px]"} />
             </div>
-            <div className="sw-max flex">
-              <span className="  whitespace-nowrap font-[700]">Gender:</span>
-              <input className={INnputClasses} />
+            <div className="sw-max flex items-end">
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">Gender:</span>
+              <input className={INnputClasses+ " w-full"} />
             </div>
-            <div className="sw-max flex">
-              <span className="  whitespace-nowrap font-[700]">Age:</span>
-              <input className={INnputClasses} />
+            <div className="sw-max flex items-end">
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">Age:</span>
+              <input className={INnputClasses + " max-w-[50px]"} />
             </div>
-            <div className="sw-max flex">
-              <span className="  whitespace-nowrap font-[700]">
+            <div className="sw-max flex items-end">
+              <span className="  whitespace-nowrap font-[700] print:text-[10px] items-end">
                 Number of times present:
               </span>
-              <input className={INnputClasses + " w-[50px]"} />
+              <input className={INnputClasses + " max-w-[50px]"} />
             </div>
           </div>
-          <div className="flex items-end gap-[20px] justify-between">
-            <div className="flex-1 flex">
-              <span className="  whitespace-nowrap font-[700]">Class:</span>
+          <div className="flex items-end gap-[10px] justify-between">
+            <div className="min-w-[100px] flex items-end">
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">Class:</span>
+              <input className={INnputClasses + " max-w-[100px]"} />
+            </div>
+            <div className="sw-max flex-1 flex items-end">
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">Session:</span>
               <input className={INnputClasses} />
             </div>
-            <div className="sw-max flex">
-              <span className="  whitespace-nowrap font-[700]">Session:</span>
-              <input className={INnputClasses} />
-            </div>
-            <div className="sw-max flex">
-              <span className="  whitespace-nowrap font-[700]">
+            <div className="sw-max flex items-end">
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">
                 Number in class:
               </span>
-              <input className={INnputClasses + " w-[50px]"} />
+              <input className={INnputClasses + " max-w-[50px]"} />
             </div>
           </div>
           <div></div>
         </div>
-        <table className="w-[400px] print:w-[150px] print:max-w-[150px] border" border={1}>
+        <table className="w-[400px] print:w-[200px] print:text-[10px] print:max-w-[150px] border" border={1}>
           <tbody>
             <tr className="border !border-[#111]">
               <td>
@@ -295,13 +300,13 @@ export default function Home() {
                 <div className="flex items-center justify-between px-[5px]">
                   <span className="font-[700]">Percentage:</span>
                   <span>
-                    {(subjectsData.reduce(
+                    {roundTo((subjectsData.reduce(
                       (acc, subject) =>
                         parseInt(acc) + (parseInt(subject.tt) || 0),
                       0
                     ) /
                       (subjectsData.length * 100)) *
-                      100 || 0}{" "}
+                      100 || 0, 2)}{" "}
                     %
                   </span>
                 </div>
@@ -311,7 +316,7 @@ export default function Home() {
               <td>
                 <div className="flex items-center justify-between px-[5px]">
                   <span className="font-[700]">Average:</span>
-                  <span>{average} %</span>
+                  <span>{roundTo(average, 2)} %</span>
                 </div>
               </td>
             </tr>
@@ -356,13 +361,13 @@ export default function Home() {
             <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center border-t border-l border-[#111] uppercase text-center col-span-2">
               subject
             </div>
-            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
+            {/* <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
               2nd term total
-            </div>
+            </div> */}
             <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-2">
               FIRST TEST/NOTE ASSESSMENT
             </div>
-            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-2">
               MID TERM TEST
             </div>
             <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
@@ -382,13 +387,13 @@ export default function Home() {
             </div>
 
             <div className="font-[700] text-[14px] print:text-[8px] col-span-2"></div>
-            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1">
+            {/* <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1">
               100
-            </div>
+            </div> */}
             <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-2">
               10
             </div>
-            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1">
+            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-2">
               30
             </div>
             <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1">
@@ -411,7 +416,7 @@ export default function Home() {
                     defaultValue={subject.subject}
                   />
                 </div>
-                <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
+                {/* <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
                   <input
                     className={scoreInput}
                     value={subject.ttrm}
@@ -419,7 +424,7 @@ export default function Home() {
                       handleScoreChange(index, "ttrm", e.target.value)
                     }
                   />
-                </div>
+                </div> */}
                 <div className="font-[500] print:h-[20px] h-[40px] col-span-2">
                   <input
                     className={scoreInput}
@@ -429,7 +434,7 @@ export default function Home() {
                     }
                   />
                 </div>
-                <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
+                <div className="font-[500] print:h-[20px] h-[40px] col-span-2">
                   <input
                     className={scoreInput}
                     value={subject.ca2}
@@ -763,7 +768,7 @@ export default function Home() {
                   <td>
                     <div className="flex items-center justify-center  text-[8px] px-[5px]">
                       <span className="font-[400] text-[14px] printer print:text-[8px] !font-[500]">
-                        2 == Fair
+                        3 == Fair
                       </span>
                     </div>
                   </td>
@@ -795,7 +800,15 @@ export default function Home() {
         <div className="flex items-end gap-[20px] justify-between">
           <div className="flex-1 items-center gap-[10px] flex">
             <span className="whitespace-nowrap uppercase font-[600]">
-              Subject teachers comment:
+              Class teacher's comment:
+            </span>
+            <input className={INnputClasses + " !text-start px-[20px]"} />
+          </div>
+        </div>
+        <div className="flex items-end gap-[20px] justify-between">
+          <div className="flex-1 items-center gap-[10px] flex">
+            <span className="whitespace-nowrap uppercase font-[600]">
+            HEAD TEACHER/PRINCIPAL'S COMMENt:
             </span>
             <input className={INnputClasses + " !text-start px-[20px]"} />
           </div>
