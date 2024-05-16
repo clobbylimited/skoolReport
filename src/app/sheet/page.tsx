@@ -164,25 +164,52 @@ export default function Home() {
 
   let grade;
 
-  if (average >= 70) {
+  let percentt =
+    (subjectsData.reduce(
+      (acc, subject) => parseInt(acc) + (parseInt(subject.tt) || 0),
+      0
+    ) /
+      (subjectsData.length * 100)) *
+      100 || 0;
+
+  // if (percentt >= 70) {
+  //   grade = "A";
+  // }
+  // if (percentt >= 61 && percentt < 69.9) {
+  //   grade = "B";
+  // }
+  // if (percentt >= 50 && percentt < 59.9) {
+  //   grade = "C";
+  // }
+  // if (percentt >= 40 && percentt < 49.9) {
+  //   grade = "D";
+  // }
+  // if (percentt <= 39.9) {
+  //   grade = "F";
+  // }
+
+  if (percentt >= 90) {
     grade = "A";
   }
-  if (average >= 61 && average < 69.9) {
+  if (percentt >= 70 && percentt < 89.9) {
+    grade = "A";
+  }
+  if (percentt >= 60 && percentt < 69.9) {
     grade = "B";
   }
-  if (average >= 50 && average < 59.9) {
+  if (percentt >= 50 && percentt < 59.9) {
     grade = "C";
   }
-  if (average >= 40 && average < 49.9) {
+  if (percentt >= 40 && percentt < 49.9) {
     grade = "D";
   }
-  if (average <= 39.9) {
+  if (percentt <= 39.9) {
     grade = "F";
   }
 
   function roundTo(num: number, precision: number) {
-    const factor = Math.pow(10, precision)
-    return Math.round(num * factor) / factor
+    const factor = Math.pow(10, precision);
+    return Math.round(num * factor) / factor;
   }
 
   return (
@@ -205,9 +232,7 @@ export default function Home() {
             <span className="font-[500]">
               29, First Apex Avenue, Amikanle ,Alagbado. Lagos State
             </span>
-            <span className="font-[500]">
-              TEL: 01-8744707,08035253353, 08035290535
-            </span>
+            <span className="font-[500]">TEL: 08035253353, 08035290535</span>
             <span className="font-[500]">
               Website: www.firstapexschools.com, E-mail:
               firstapexschools@yahoo.com
@@ -223,7 +248,9 @@ export default function Home() {
         <div className="dflex-1 w-max flex flex-col gap-[10px]">
           <div className="flex items-end gap-[10px] justify-between">
             <div className="flex-1 flex items-end">
-              <span className=" whitespace-nowrap font-[700] print:text-[10px]">Name:</span>
+              <span className=" whitespace-nowrap font-[700] print:text-[10px]">
+                Name:
+              </span>
               <input className={INnputClasses} />
             </div>
             <div className="sw-max flex items-end">
@@ -235,15 +262,21 @@ export default function Home() {
           </div>
           <div className="flex items-end gap-[10px] justify-between">
             <div className="flex-1 flex items-end">
-              <span className="  whitespace-nowrap font-[700] print:text-[10px]">Student ID:</span>
-              <input className={INnputClasses+ " max-w-[200px]"} />
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">
+                Student ID:
+              </span>
+              <input className={INnputClasses + " max-w-[200px]"} />
             </div>
             <div className="sw-max flex items-end">
-              <span className="  whitespace-nowrap font-[700] print:text-[10px]">Gender:</span>
-              <input className={INnputClasses+ " w-full"} />
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">
+                Gender:
+              </span>
+              <input className={INnputClasses + " w-full"} />
             </div>
             <div className="sw-max flex items-end">
-              <span className="  whitespace-nowrap font-[700] print:text-[10px]">Age:</span>
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">
+                Age:
+              </span>
               <input className={INnputClasses + " max-w-[50px]"} />
             </div>
             <div className="sw-max flex items-end">
@@ -255,11 +288,15 @@ export default function Home() {
           </div>
           <div className="flex items-end gap-[10px] justify-between">
             <div className="min-w-[100px] flex items-end">
-              <span className="  whitespace-nowrap font-[700] print:text-[10px]">Class:</span>
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">
+                Class:
+              </span>
               <input className={INnputClasses + " max-w-[100px]"} />
             </div>
             <div className="sw-max flex-1 flex items-end">
-              <span className="  whitespace-nowrap font-[700] print:text-[10px]">Session:</span>
+              <span className="  whitespace-nowrap font-[700] print:text-[10px]">
+                Session:
+              </span>
               <input className={INnputClasses} />
             </div>
             <div className="sw-max flex items-end">
@@ -271,7 +308,10 @@ export default function Home() {
           </div>
           <div></div>
         </div>
-        <table className="w-[400px] print:w-[200px] print:text-[10px] print:max-w-[150px] border" border={1}>
+        <table
+          className="w-[400px] print:w-[200px] print:text-[10px] print:max-w-[150px] border"
+          border={1}
+        >
           <tbody>
             <tr className="border !border-[#111]">
               <td>
@@ -299,27 +339,18 @@ export default function Home() {
               <td>
                 <div className="flex items-center justify-between px-[5px]">
                   <span className="font-[700]">Percentage:</span>
-                  <span>
-                    {roundTo((subjectsData.reduce(
-                      (acc, subject) =>
-                        parseInt(acc) + (parseInt(subject.tt) || 0),
-                      0
-                    ) /
-                      (subjectsData.length * 100)) *
-                      100 || 0, 2)}{" "}
-                    %
-                  </span>
+                  <span>{roundTo(percentt, 2)} %</span>
                 </div>
               </td>
             </tr>
-            <tr className="border !border-[#111]">
+            {/* <tr className="border !border-[#111]">
               <td>
                 <div className="flex items-center justify-between px-[5px]">
                   <span className="font-[700]">Average:</span>
                   <span>{roundTo(average, 2)} %</span>
                 </div>
               </td>
-            </tr>
+            </tr> */}
             <tr className="border !border-[#111]">
               <td>
                 <div className="flex items-center justify-between px-[5px]">
@@ -808,7 +839,7 @@ export default function Home() {
         <div className="flex items-end gap-[20px] justify-between">
           <div className="flex-1 items-center gap-[10px] flex">
             <span className="whitespace-nowrap uppercase font-[600]">
-            HEAD TEACHER/PRINCIPAL'S COMMENt:
+              HEAD TEACHER/PRINCIPAL'S COMMENt:
             </span>
             <input className={INnputClasses + " !text-start px-[20px]"} />
           </div>
