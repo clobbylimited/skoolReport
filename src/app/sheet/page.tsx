@@ -100,14 +100,14 @@ export default function Home() {
           }
 
           // Calculate the overall total
-          // if (field === "ttca" || field === "ex") {
-          updatedSubject.tt =
-            parseInt(updatedSubject.ttca || 0) +
-            parseInt(updatedSubject.ex || 0);
-          if (updatedSubject.tt > 100) {
-            updatedSubject.tt = 100;
+          if (field === "ttca" || field === "ex") {
+            updatedSubject.tt =
+              parseInt(updatedSubject.ttca || 0) +
+              parseInt(updatedSubject.ex || 0);
+            if (updatedSubject.tt > 100) {
+              updatedSubject.tt = 100;
+            }
           }
-          // }
 
           // Calculate the overall total
           if (updatedSubject.tt >= 90) {
@@ -188,22 +188,22 @@ export default function Home() {
   //   grade = "F";
   // }
 
-  if (percentt >= 90) {
+  if (average >= 90) {
     grade = "A";
   }
-  if (percentt >= 70 && percentt < 89.9) {
+  if (average >= 70 && average < 89.9) {
     grade = "A";
   }
-  if (percentt >= 60 && percentt < 69.9) {
+  if (average >= 60 && average < 69.9) {
     grade = "B";
   }
-  if (percentt >= 50 && percentt < 59.9) {
+  if (average >= 50 && average < 59.9) {
     grade = "C";
   }
-  if (percentt >= 40 && percentt < 49.9) {
+  if (average >= 40 && average < 49.9) {
     grade = "D";
   }
-  if (percentt <= 39.9) {
+  if (average <= 39.9) {
     grade = "F";
   }
 
@@ -343,14 +343,14 @@ export default function Home() {
                 </div>
               </td>
             </tr>
-            {/* <tr className="border !border-[#111]">
+            <tr className="border !border-[#111]">
               <td>
                 <div className="flex items-center justify-between px-[5px]">
                   <span className="font-[700]">Average:</span>
                   <span>{roundTo(average, 2)} %</span>
                 </div>
               </td>
-            </tr> */}
+            </tr>
             <tr className="border !border-[#111]">
               <td>
                 <div className="flex items-center justify-between px-[5px]">
@@ -392,9 +392,9 @@ export default function Home() {
             <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center border-t border-l border-[#111] uppercase text-center col-span-2">
               subject
             </div>
-            {/* <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
               2nd term total
-            </div> */}
+            </div>
             <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-2">
               FIRST TEST/NOTE ASSESSMENT
             </div>
@@ -413,14 +413,14 @@ export default function Home() {
             <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
               Grade
             </div>
-            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-2">
+            <div className="font-[700] text-[14px] print:text-[8px] flex justify-center items-center uppercase text-center col-span-1">
               SUBJECT TEACHER'S COMMENTS
             </div>
 
             <div className="font-[700] text-[14px] print:text-[8px] col-span-2"></div>
-            {/* <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1">
+            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1">
               100
-            </div> */}
+            </div>
             <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-2">
               10
             </div>
@@ -437,7 +437,7 @@ export default function Home() {
               100
             </div>
             <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1"></div>
-            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-2"></div>
+            <div className="font-[700] text-[14px] print:text-[8px] text-center  col-span-1"></div>
 
             {subjectsData.map((subject: any, index: number) => (
               <>
@@ -447,7 +447,7 @@ export default function Home() {
                     defaultValue={subject.subject}
                   />
                 </div>
-                {/* <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
+                <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
                   <input
                     className={scoreInput}
                     value={subject.ttrm}
@@ -455,7 +455,7 @@ export default function Home() {
                       handleScoreChange(index, "ttrm", e.target.value)
                     }
                   />
-                </div> */}
+                </div>
                 <div className="font-[500] print:h-[20px] h-[40px] col-span-2">
                   <input
                     className={scoreInput}
@@ -519,7 +519,7 @@ export default function Home() {
                     value={subject.gd}
                   />
                 </div>
-                <div className="font-[500] print:h-[20px] h-[40px] col-span-2">
+                <div className="font-[500] print:h-[20px] h-[40px] col-span-1">
                   <input
                     className={
                       scoreInput +
