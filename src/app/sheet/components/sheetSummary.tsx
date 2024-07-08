@@ -32,19 +32,19 @@ function SheetSummary({
         <tbody>
           <tr className="border-b">
             <td className="flex p-[8px] text-start uppercase border-r">
-              Total Marks Obtainable
+              Marks Obtainable
             </td>
             <td className="px-[8px]">{obtainable}</td>
           </tr>
           <tr className="border-b">
             <td className="flex p-[8px] text-start uppercase border-r">
-              Total Marks Obtained
+              Marks Obtained
             </td>
             <td className="px-[8px]">{obtained}</td>
           </tr>
           <tr className="border-b">
             <td className="flex p-[8px] text-start uppercase border-r">
-              Term Percentage
+              Percentage
             </td>
             <td className="px-[8px]">{termPercent}%</td>
           </tr>
@@ -58,7 +58,7 @@ function SheetSummary({
           )}
           <tr>
             <td className="flex p-[8px] text-start uppercase border-r">
-              Culmmulative Grade
+              Grade
             </td>
             <td className="px-[8px]">
               {
@@ -75,19 +75,19 @@ function SheetSummary({
         <tbody>
           <tr>
             <td className="border p-[8px] font-[700] text-start uppercase border-b">
-              <span className="font-[400] mr-[8px]">Total Marks Obtainable:</span> {obtainable}
+              <span className="font-[400] mr-[8px]">Marks Obtainable:</span> {obtainable}
             </td>
             <td className="border p-[8px] font-[700] text-start uppercase border-b">
-              <span className="font-[400] mr-[8px]">Total Marks Obtained:</span> {obtained}
+              <span className="font-[400] mr-[8px]">Marks Obtained:</span> {obtained}
             </td>
             <td className="border p-[8px] font-[700] text-start uppercase border-b">
-              <span className="font-[400] mr-[8px]">Term Percentage:</span> {termPercent}%
+              <span className="font-[400] mr-[8px]">Percentage:</span> {termPercent}%
             </td>
             {previous_term_in_session && (<td className="border p-[8px] text-start uppercase border-b">
-              <span className="font-[400] mr-[8px]">Term Percentage:</span> {termPercent}%
+              <span className="font-[400] mr-[8px]">Percentage:</span> {termPercent}%
             </td>)}
             <td className="border p-[8px] font-[700] text-start uppercase border-b">
-              <span className="font-[400] mr-[8px]">Culmmulative Grade:</span> 
+              <span className="font-[400] mr-[8px]">Grade:</span> 
               {
                 grade_comment_board.find(
                   (grade: any) =>

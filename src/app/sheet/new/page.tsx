@@ -197,12 +197,12 @@ function NewSheetPage({}: Props) {
   return (
     <div className="px-[20px] m-auto w-[1000px] print:w-full print:border-none p-[24px] border py-[50px] print:py-0 flex flex-col gap-[40px] print:px-0">
       <SheetHeader schoolData={schoolData}  />
-      <SheetStudentGeneralInfo data={StudentGeneralData} />
       <SheetSummary
         grade_comment_board={gradeCommentBoard}
         subjects={subjects}
         student_subject_score={scores}
       />
+      <SheetStudentGeneralInfo data={StudentGeneralData} />
       <SheetTable
         grade_comment_board={gradeCommentBoard}
         student_subject_score={scores}
