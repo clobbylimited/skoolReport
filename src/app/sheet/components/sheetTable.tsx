@@ -1,7 +1,5 @@
 "use client"
 
-import { useState } from "react";
-
 type Props = {};
 function SheetTable({
   subjects,
@@ -10,24 +8,24 @@ function SheetTable({
   previous_term_in_session,
   score_progression,
   student_subject_score,
+  set_student_subject_score
 }: any) {
   const caProgressions = score_progression.filter(
     (progress: any) => progress.is_ca == true
   );
-  const [scores, setScores] = useState(student_subject_score);
   const handleScoreChange = (e: any, progressionId: any, subjectId: any) => {
-    const updatedScores = scores.map((ssc: any) => {
+    const updatedScores = student_subject_score.map((ssc: any) => {
       if (ssc.progression_id === progressionId && ssc.subjects_id === subjectId) {
         return { ...ssc, score: e.target.value };
       }
       return ssc;
     });
-    setScores(updatedScores);
+    set_student_subject_score(updatedScores);
   };
 
 
   const findScore = (progressionId: any, subjectId: any) => {
-    const foundScore = scores.find(
+    const foundScore = student_subject_score.find(
       (ssc: any) => ssc.progression_id === progressionId && ssc.subjects_id === subjectId
     );
     return foundScore ? foundScore.score : '';
@@ -37,7 +35,7 @@ function SheetTable({
   return (
     <table
       border={1}
-      className="table-auto text-[14px] print:text-[12px] w-full border border-collapse"
+      className="table-auto text-[14px] print:text-[10px] w-full border border-collapse"
     >
       <thead className=" uppercase">
         <tr>
@@ -93,9 +91,9 @@ function SheetTable({
       <tbody>
         {subjects.map((subject: any) => (
           <tr>
-            <th className="flex p-[8px] text-start border-b dborder-r dw-[200px]">
+            <td className="flex p-[8px] text-start uppercase     border-b dborder-r dw-[200px]">
               {subject.name}
-            </th>
+            </td>
             {previous_term_in_session && (
               <td className="border p-0">
                 <input
@@ -107,7 +105,7 @@ function SheetTable({
             {score_progression.map(
               (scoreTypes: any) =>
                 scoreTypes.is_ca && (
-                  <td className="border p-0 dw-[150px] cursor-text focus-within:bg-zinc-300 transition-all duration-300">
+                  <td className="border p-0 dw-[150px] cursor-text focus-within:bg-zinc-100 transition-all duration-300">
                     <input
                       type="number"
                       className="w-full h-full border-0 text-center outline-none bg-transparent"
@@ -118,7 +116,7 @@ function SheetTable({
                 )
             )}
             <td className="border text-center">
-              {scores
+              {student_subject_score
                 .filter((score: any) =>
                   caProgressions.find(
                     (caProgression: any) =>
@@ -136,7 +134,7 @@ function SheetTable({
             {score_progression.map(
               (scoreTypes: any) =>
                 !scoreTypes.is_ca && (
-                  <td className="border !p-0 dw-[150px] cursor-text focus-within:bg-zinc-300 transition-all duration-300">
+                  <td className="border !p-0 dw-[150px] cursor-text focus-within:bg-zinc-100 transition-all duration-300">
                     <input
                       type="number"
                       className="w-full !h-full border-0 text-center outline-none bg-transparent"
@@ -147,7 +145,7 @@ function SheetTable({
                 )
             )}
             <td className="border text-center">
-              {scores
+              {student_subject_score
                 .filter((score: any) => score.subjects_id == subject.id)
                 .reduce(
                   (accumulator: any, currentValue: any) =>
@@ -159,7 +157,7 @@ function SheetTable({
             <td className="border text-center">
               {
                 grade_comment_board.find((grade: any) => {
-                  const totalSubjectScore = scores
+                  const totalSubjectScore = student_subject_score
                     .filter((score: any) => score.subjects_id === subject.id)
                     .reduce((accumulator: number, currentValue: any) => {
                       return accumulator + parseFloat(currentValue.score || 0);
@@ -175,7 +173,7 @@ function SheetTable({
             <td className="border text-center">
               {
                 grade_comment_board.find((grade: any) => {
-                  const totalSubjectScore = scores
+                  const totalSubjectScore = student_subject_score
                     .filter((score: any) => score.subjects_id === subject.id)
                     .reduce((accumulator: number, currentValue: any) => {
                       return accumulator + parseFloat(currentValue.score || 0);
