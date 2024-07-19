@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "@/asset/logo.png";
 import Image from "next/image";
 
@@ -162,15 +162,44 @@ export default function Home() {
         100 || 0)) /
     2;
 
-  let grade;
+  // let grade;
 
-  let percentt =
-    (subjectsData.reduce(
-      (acc, subject) => parseInt(acc) + (parseInt(subject.tt) || 0),
-      0
-    ) /
-      (subjectsData.length * 100)) *
-      100 || 0;
+  const [overallGrade, setoverallGrade] = useState<string>();
+  const [percentt, setpercentt] = useState<number>(0);
+
+  useEffect(() => {
+    let percentt1 =
+      (subjectsData.reduce(
+        (acc, subject) => parseInt(acc) + (parseInt(subject.tt) || 0),
+        0
+      ) /
+        (subjectsData.length * 100)) *
+        100 || 0;
+
+    setpercentt(percentt1);
+    let grade;
+
+    if (percentt1 >= 90) {
+      grade = "A";
+    }
+    if (percentt1 >= 70 && percentt1 < 89.9) {
+      grade = "A";
+    }
+    if (percentt1 >= 60 && percentt1 < 69.9) {
+      grade = "B";
+    }
+    if (percentt1 >= 50 && percentt1 < 59.9) {
+      grade = "C";
+    }
+    if (percentt1 >= 40 && percentt1 < 49.9) {
+      grade = "D";
+    }
+    if (percentt1 <= 39.9) {
+      grade = "F";
+    }
+
+    setoverallGrade(grade);
+  }, [subjectsData]);
 
   // if (percentt >= 70) {
   //   grade = "A";
@@ -187,25 +216,6 @@ export default function Home() {
   // if (percentt <= 39.9) {
   //   grade = "F";
   // }
-
-  if (average >= 90) {
-    grade = "A";
-  }
-  if (average >= 70 && average < 89.9) {
-    grade = "A";
-  }
-  if (average >= 60 && average < 69.9) {
-    grade = "B";
-  }
-  if (average >= 50 && average < 59.9) {
-    grade = "C";
-  }
-  if (average >= 40 && average < 49.9) {
-    grade = "D";
-  }
-  if (average <= 39.9) {
-    grade = "F";
-  }
 
   function roundTo(num: number, precision: number) {
     const factor = Math.pow(10, precision);
@@ -355,7 +365,7 @@ export default function Home() {
               <td>
                 <div className="flex items-center justify-between px-[5px]">
                   <span className="font-[700]">Overall Grade:</span>
-                  <span>{grade}</span>
+                  <span>{overallGrade}</span>
                 </div>
               </td>
             </tr>

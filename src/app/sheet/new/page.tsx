@@ -4,6 +4,8 @@ import SheetSummary from "../components/sheetSummary";
 import SheetTable from "../components/sheetTable";
 import SheetStudentGeneralInfo from "../components/sheetStudentGeneralInfo";
 import SheetHeader from "../components/sheetHeader";
+import SheetGradeSummary from "../components/sheetGradeSummary";
+import SheetRemarks from "../components/sheetRemarks";
 
 type Props = {};
 
@@ -158,8 +160,8 @@ const schoolData = {
   motto: "Grooming for Excellence",
   address: "29, First Apex Avenue, Amikanle Alagbado, Lagod State",
   tel: "08035253353, 08035290535",
-  email: "firstapexschools@yahoo.com@gmail.com"
-}
+  email: "firstapexschools@yahoo.com@gmail.com",
+};
 
 function NewSheetPage({}: Props) {
   const [scores, setScores] = useState(studentSubjectScore);
@@ -195,8 +197,8 @@ function NewSheetPage({}: Props) {
   // }, []);
 
   return (
-    <div className="px-[20px] m-auto w-[1000px] print:w-full print:border-none p-[24px] border py-[50px] print:py-0 flex flex-col gap-[40px] print:px-0">
-      <SheetHeader schoolData={schoolData}  />
+    <div className="px-[20px] m-auto w-[1000px] print:w-full print:border-none p-[24px] border py-[50px] print:py-0 flex flex-col print:gap-[24px] gap-[40px] print:px-0">
+      <SheetHeader schoolData={schoolData} />
       <SheetSummary
         grade_comment_board={gradeCommentBoard}
         subjects={subjects}
@@ -210,6 +212,11 @@ function NewSheetPage({}: Props) {
         score_progression={scoreProgression}
         set_student_subject_score={setScores}
       />
+      <div className="flex items-end justify-between gap-[40px] print:gap-[20px]">
+
+      <SheetRemarks />
+      <SheetGradeSummary grade_comment_board={gradeCommentBoard} />
+      </div>
       {/* <SheetTabularChecks {...affectiveDomains} />
       <SheetTabularChecks {...psy} /> */}
     </div>

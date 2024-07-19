@@ -1,37 +1,52 @@
-import { client } from "@/db/database";
-// import { MongoClient } from 'mongodb';
+// app/api/sessions/create/route.ts
+import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/auth";
+// /auth/[...nextauth]"
+import dbConnect from "@/lib/mongodb";
+import {
+  Session,
+  School
+} from "@/models";
 
-export async function GET() {
-  try {
-    await client.connect();
-    const db = client.db("myFirstDatabase");
-    
-    const terms = await db.collection('term').find({}).toArray()
-    return Response.json(terms);
-  } catch (error) {
-    console.log(error)
-    return Response.json({ error: "Unable to connect to database" });
-  } finally {
-    await client.close();
+export async function GET(request: Request) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return NextResponse.json(
+      { success: false, error: "Not authenticated" },
+      { status: 401 }
+    );
   }
 
-  
-}
+  await dbConnect();
 
-export async function POST(req: any) {
   try {
-    await client.connect();
-    const db = client.db("myFirstDatabase");
-    
-    const data = await req.json()
-    const term = await db.collection('term').insertOne(data)
-    
-    return Response.json({message: "success"});
-  } catch (error) {
-    return Response.json({ error: "Unable to connect to database" });
-  } finally {
-    await client.close();
-  }
+    const school = await School.findOne({
+      adminUser: (session.user as any).id,
+    });
 
-  
+    if (!school) {
+      return NextResponse.json(
+        { success: false, error: "School not found" },
+        { status: 404 }
+      );
+    }
+    const sessions = await Session.find({ school: school.id });
+
+    return NextResponse.json(
+      {
+        success: true,
+        sessions: sessions,
+      },
+      { status: 200 }
+    );
+    
+  } catch (error) {
+    console.error("Error fetching session data:", error);
+    return NextResponse.json(
+      { success: false, error: "Error fetching session data" },
+      { status: 500 }
+    );
+  }
 }

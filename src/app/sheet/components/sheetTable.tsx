@@ -89,9 +89,9 @@ function SheetTable({
         </tr>
       </thead>
       <tbody>
-        {subjects.map((subject: any) => (
+        {subjects.map((subject: any, index: number) => (
           <tr>
-            <td className="flex p-[8px] text-start uppercase     border-b dborder-r dw-[200px]">
+            <td className={`${subjects.length - 1 == index ? "border-none" : "border-b"} flex p-[8px] text-start uppercase dborder-b dborder-r dw-[200px]`}>
               {subject.name}
             </td>
             {previous_term_in_session && (
